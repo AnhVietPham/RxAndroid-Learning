@@ -1,4 +1,4 @@
-package com.example.anhvietpham.basic_rxandroid
+package com.example.anhvietpham.basic_observable_and_observer
 
 import org.junit.Test
 
