@@ -9,7 +9,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.example.anhvietpham.type_of_operators.just.Example8Activity">
+        <activity android:name="com.example.anhvietpham.type_of_operators.from.Example9Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
