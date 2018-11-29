@@ -9,7 +9,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.example.anhvietpham.observables.completeble_completableObserver.Example14Activity">
+        <activity android:name="com.example.anhvietpham.observables.flowable_observer.Example15Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
