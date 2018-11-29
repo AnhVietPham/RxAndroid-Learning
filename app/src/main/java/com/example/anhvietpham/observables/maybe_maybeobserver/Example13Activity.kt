@@ -1,32 +1,31 @@
-package com.example.anhvietpham.observables.single_singleObserver
+package com.example.anhvietpham.observables.maybe_maybeobserver
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import io.reactivex.Single
-import io.reactivex.SingleObserver
+import io.reactivex.Maybe
+import io.reactivex.MaybeObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class Example12Activity : AppCompatActivity() {
+
+class Example13Activity : AppCompatActivity() {
     private var disposable: Disposable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val noteObservable = getNoteObservable()
 
-        val singleObserver = getSingleObserver()
+        val noteObserver = getNoteObserver()
 
-        noteObservable
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe(singleObserver)
+        noteObservable.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(noteObserver)
     }
 
-    private fun getSingleObserver(): SingleObserver<Note> {
-        return object : SingleObserver<Note> {
+    private fun getNoteObserver(): MaybeObserver<Note> {
+        return object : MaybeObserver<Note> {
             override fun onSubscribe(d: Disposable) {
-                Log.d("TAG", "onSubscribe")
                 disposable = d
             }
 
@@ -35,15 +34,21 @@ class Example12Activity : AppCompatActivity() {
             }
 
             override fun onError(e: Throwable) {
-                Log.d("TAG", "onError: " + e.message)
+                Log.e("TAG", "onError: " + e.message)
+            }
+
+            override fun onComplete() {
+                Log.e("TAG", "onComplete")
             }
         }
     }
 
-    private fun getNoteObservable(): Single<Note> {
-        return Single.create { emitter ->
-            val note = Note(1, "Buy milk!")
-            emitter.onSuccess(note)
+    private fun getNoteObservable(): Maybe<Note> {
+        return Maybe.create { emitter ->
+            val note = Note(1, "Call brother!")
+            if (!emitter.isDisposed) {
+                emitter.onSuccess(note)
+            }
         }
     }
 
