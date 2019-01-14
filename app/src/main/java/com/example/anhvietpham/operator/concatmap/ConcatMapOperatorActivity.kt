@@ -1,4 +1,4 @@
-package com.example.anhvietpham.operator.flatmap
+package com.example.anhvietpham.operator.concatmap
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -11,38 +11,35 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-
-class FlatMapOperatorActivity : AppCompatActivity() {
-    private val TAG = FlatMapOperatorActivity::class.java.simpleName
+class ConcatMapOperatorActivity : AppCompatActivity() {
+    private val TAG = ConcatMapOperatorActivity::class.java.simpleName
     private var disposable: Disposable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getUsersObservable()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .flatMap { user ->
-                getAddressObservable(user)
+            .concatMap { user ->
+                getAddressObservable(user = user)
             }
             .subscribe(object : Observer<User>{
                 override fun onComplete() {
-                    Log.e(TAG, "All users emitted!")
+                    Log.e("ConcatMapOperator", "All users emitted!")
                 }
 
                 override fun onSubscribe(d: Disposable) {
-                    Log.e(TAG, "onSubscribe")
+                    Log.e("ConcatMapOperator", "onSubscribe")
                     disposable = d
                 }
 
                 override fun onNext(t: User) {
-                    Log.e(TAG, "onNext: " + t.name + ", " + t.gender + ", " + t.address?.city)
+                    Log.e("ConcatMapOperator", "onNext: " + t.name + ", " + t.gender + ", " + t.address?.city)
                 }
 
                 override fun onError(e: Throwable) {
                 }
-
             })
     }
-
 
     private fun getAddressObservable(user: User): Observable<User> {
 
