@@ -16,6 +16,7 @@ class ConcatMapOperatorActivity : AppCompatActivity() {
     private var disposable: Disposable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        concatCombine()
         getUsersObservable()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -94,6 +95,85 @@ class ConcatMapOperatorActivity : AppCompatActivity() {
                 }
             }).subscribeOn(Schedulers.io())
     }
+
+    private fun concatCombine(){
+        Observable
+            .concat(getFemaleObservable(),getMaleObservable())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : Observer<User>{
+                override fun onComplete() {
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                }
+
+                override fun onNext(t: User) {
+                    Log.e("ConcatCombine", t.name + ", " + t.gender)
+                }
+
+                override fun onError(e: Throwable) {
+                }
+
+            })
+    }
+
+
+    private fun getMaleObservable(): Observable<User> {
+        val maleUsers = arrayOf("Mark", "John", "Trump","Obama")
+
+        val users = mutableListOf<User>()
+
+        for (name in maleUsers) {
+            val user = User()
+            user.name = name
+            user.gender = "male"
+
+            users.add(user)
+        }
+
+        return Observable
+            .create(ObservableOnSubscribe<User> { emitter ->
+                for (user in users) {
+                    if (!emitter.isDisposed) {
+                        Thread.sleep(1000)
+                        emitter.onNext(user)
+                    }
+                }
+
+                if (!emitter.isDisposed) {
+                    emitter.onComplete()
+                }
+            }).subscribeOn(Schedulers.io())
+    }
+
+    private fun getFemaleObservable(): Observable<User> {
+        val maleUsers = arrayOf("Lucy", "Scarlett", "April")
+
+        val users = mutableListOf<User>()
+
+        for (name in maleUsers) {
+            val user = User()
+            user.name = name
+            user.gender = "Famle"
+
+            users.add(user)
+        }
+
+        return Observable
+            .create(ObservableOnSubscribe<User> { emitter ->
+                for (user in users) {
+                    if (!emitter.isDisposed) {
+                        Thread.sleep(3000)
+                        emitter.onNext(user)
+                    }
+                }
+
+                if (!emitter.isDisposed) {
+                    emitter.onComplete()
+                }
+            }).subscribeOn(Schedulers.io())
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
