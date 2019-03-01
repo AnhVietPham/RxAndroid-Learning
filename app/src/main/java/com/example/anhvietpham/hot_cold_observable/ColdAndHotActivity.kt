@@ -10,7 +10,8 @@ import io.reactivex.schedulers.Schedulers
 class ColdAndHotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        testColdObservable()
+       // testColdObservable()
+        testHotObservable()
     }
 
     private fun testColdObservable() {
@@ -28,6 +29,21 @@ class ColdAndHotActivity : AppCompatActivity() {
             .subscribe {
                 Log.e("ColdAndHotActivity", "Call with return value $it")
             }
+
+        Log.e("ColdAndHotActivity", "Right after Observable")
+    }
+
+    private fun testHotObservable(){
+        Log.e("ColdAndHotActivity", "Before Observable")
+        val observable = Observable
+            .just(1)
+            .publish()
+
+        observable.connect()
+
+        observable.subscribe {
+            Log.e("ColdAndHotActivity", "Call with return value $it")
+        }
 
         Log.e("ColdAndHotActivity", "Right after Observable")
     }
