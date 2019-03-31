@@ -9,6 +9,7 @@ import io.reactivex.schedulers.Schedulers
 /*
 * Test merger branch github
 * Create new branch
+* Createing new branch 2
 * */
 class ColdAndHotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
