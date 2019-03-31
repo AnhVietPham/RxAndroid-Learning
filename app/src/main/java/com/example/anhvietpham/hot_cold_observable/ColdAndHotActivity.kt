@@ -6,7 +6,9 @@ import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-
+/*
+* Test merger branch github
+* */
 class ColdAndHotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
