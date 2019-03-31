@@ -53,5 +53,8 @@ class ColdAndHotActivity : AppCompatActivity() {
     }
 }
 /*
+* Add merger
+* */
+/*
 * Add comment
 * */
