@@ -52,3 +52,6 @@ class ColdAndHotActivity : AppCompatActivity() {
         Log.e("ColdAndHotActivity", "Right after Observable")
     }
 }
+/*
+* Add comment
+* */
