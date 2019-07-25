@@ -6,9 +6,9 @@ This project covers basics to advanced topics in RxJava and RxAndroid. Start wit
 ## Description.
 ### What is Reactive Programming.
 Reactive Programming is basiclly event-based asynchorous programming. It has a lot of Data Stream which excuting simultaneously and It will emmit data. Observers which are subscribed to Oservable and Observer will reveice data which emmiting by Observable.
-An advantage of asynchorous approach is
+An advantage of asynchorous approach is every task which will run on its own thread. They will excute simultaneously.
 ### What is RxJava
-
+It is a library that composes asynchronous events by following Observer Pattern. You can create asyncbronous data stream on any thread, transform the data and comsumed it by an Observer on any thread.
 ### What is RxAndroid.
-## Who this project is for.
 
+## Who this proje
