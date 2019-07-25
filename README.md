@@ -9,6 +9,14 @@ Reactive Programming is basiclly event-based asynchorous programming. It has a l
 An advantage of asynchorous approach is every task which will run on its own thread. They will excute simultaneously.
 ### What is RxJava
 It is a library that composes asynchronous events by following Observer Pattern. You can create asyncbronous data stream on any thread, transform the data and comsumed it by an Observer on any thread.
+The library provides a lot of Operators which have many benefits.
+Examples: 
+* [Map](http://reactivex.io/documentation/operators/map.html).
+* [FlatMap](http://reactivex.io/documentation/operators/flatmap.html).
+* [Concat](http://reactivex.io/documentation/operators/concat.html).
+* [Merge](http://reactivex.io/documentation/operators/merge.html).
+* [Sum](http://reactivex.io/documentation/operators/sum.html).
+* [Average](http://reactivex.io/documentation/operators/average.html)
 ### What is RxAndroid.
 
 ## Who this proje
