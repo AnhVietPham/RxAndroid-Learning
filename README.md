@@ -18,5 +18,12 @@ Examples:
 * [Sum](http://reactivex.io/documentation/operators/sum.html).
 * [Average](http://reactivex.io/documentation/operators/average.html)
 ### What is RxAndroid.
-
-## Who this proje
+RxAndroid is specific to Android Platform. RxAndroid introduced Schedulers which supporting Multithreading concept in Android Application. The list of Schedulers available.
+* **Schedulers.io()**.
+* **AndroidSchedulers.mainThread()**.
+* **Schedulers.newThread()**.
+* **Schedulers.computation()**.
+* **Schedulers.single()**.
+* **Schedulers.immediate()**.
+* **Schedulers.trampoline()**.
+* **Schedulers.from()**.
